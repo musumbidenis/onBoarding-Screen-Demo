@@ -72,39 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Image(
-                            image: AssetImage('assets/01.png'),
-                            height: 300,
-                            width: 300,
-                          ),
-                          SizedBox(height: 20,),
-                          Text(
-                            "Testing Onboarding Screen",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    /*Slide 02 */
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Image(
@@ -128,7 +96,42 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    /*Slide 02 */
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage('assets/01.png'),
+                            height: 300,
+                            width: 300,
+                          ),
+
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Testing Onboarding Screen",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
                         ],
@@ -143,10 +146,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: _buildIndicator(),
               ),
+
+              
             ],
           ),
         ),
       ),
+      bottomSheet: _currentPage != _pages -1 ?  Container(
+        height: MediaQuery.of(context).size.height * 0.1 ,
+        width: double.infinity,
+        color: Colors.white,
+        child: Center(
+          child: Text(
+            "Next",
+            style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold),)),
+      ) : 
+      Container(
+        height: MediaQuery.of(context).size.height * 0.1 ,
+        width: double.infinity,
+        color: Colors.white,
+        child: GestureDetector(
+          onTap: (){
+            _pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.ease);
+          },
+          child: Center(
+            child: Text(
+              "Get Started",
+              style: TextStyle(
+                color: Colors.greenAccent,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold),)),
+        ),
+      )
     );
   }
 }
