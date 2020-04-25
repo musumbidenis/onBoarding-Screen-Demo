@@ -11,26 +11,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
-  List<Widget> _buildIndicator(){
+  /*Build indicator */
+  List<Widget> _buildIndicator() {
     List<Widget> list = [];
 
-    for(int i = 0; i <_pages; i++){
-    list.add(i == _currentPage ? _indicator(true): _indicator(false));
+    for (int i = 0; i < _pages; i++) {
+      list.add(i == _currentPage ? _indicator(true) : _indicator(false));
     }
     return list;
   }
 
-  Widget _indicator(bool isActive){
-    return AnimatedContainer(duration:Duration(milliseconds: 150),
-    margin: EdgeInsets.symmetric(horizontal:8.0),
-    height: 8.0,
-    width: isActive ? 24.0 : 16.0,
-    decoration: BoxDecoration(
-      color: isActive ? Colors.white : Color(0xFF7B51D3),
-    )
+  /*Indicator Widget */
+  Widget _indicator(bool isActive) {
+    return AnimatedContainer(
+        duration: Duration(milliseconds: 150),
+        margin: EdgeInsets.symmetric(horizontal: 8.0),
+        height: 8.0,
+        width: isActive ? 24.0 : 16.0,
+        decoration: BoxDecoration(
+          color: isActive ? Colors.blue : Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(12),),
+        ),
     );
-
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +46,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-
-              //Skip button//
+              //Skip button
               Container(
                 alignment: Alignment.centerRight,
                 child: FlatButton(
@@ -53,10 +56,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     )),
               ),
-
-              //Pageview//
+              //Pageview
               Container(
-                height: 600,
+                height: 500,
                 child: PageView(
                   physics: ClampingScrollPhysics(),
                   controller: _pageController,
@@ -65,82 +67,70 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       _currentPage = page;
                     });
                   },
-
                   children: <Widget>[
-                    //Asset image
+                    /*Slide 01 */
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:50),
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          
                           Image(
                             image: AssetImage('assets/01.png'),
                             height: 300,
                             width: 300,
                           ),
-
                           SizedBox(height: 20,),
-                          
-                          //Title
-                            Text(
-                              "Testing Onboarding Screen",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          
-                          SizedBox(height: 20),
-
-                          //Subtitle
                           Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,),
+                            "Testing Onboarding Screen",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
                             ),
-                          
+                          ),
                         ],
                       ),
                     ),
 
-                    //Asset image
+                    /*Slide 02 */
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:50),
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          
                           Image(
                             image: AssetImage('assets/01.png'),
                             height: 300,
                             width: 300,
                           ),
 
-                          SizedBox(height: 20,),
-                          
-                          //Title
-                            Text(
-                              "Testing Onboarding Screen",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          
-                          SizedBox(height: 20),
-
-                          //Subtitle
+                          SizedBox(
+                            height: 10,
+                          ),
                           Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,),
+                            "Testing Onboarding Screen",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra tellus nulla, tristique euismod augue. ",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
                             ),
-                          
+                          ),
                         ],
                       ),
                     ),
@@ -148,11 +138,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _buildIndicator(),
-            ),
-              
+              /*Indicators */
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildIndicator(),
+              ),
             ],
           ),
         ),
